@@ -6,6 +6,11 @@ This is a solution to the [IP address tracker challenge on Frontend Mentor](http
 
 ![](./images/screenshot.png)
 
+### Links
+
+- Challenge URL: [Challenge URL:](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0)
+- Live Site URL: [Add live site URL here](https://ip-address-tracker-frontendmentor-one.vercel.app/)
+
 ### The challenge
 
 Users should be able to:
@@ -15,10 +20,6 @@ Users should be able to:
 - See their own IP address on the map on the initial page load
 - Search for any IP addresses or domains and see the key information and location
 
-### Links
-
-- Challenge URL: [Add solution URL here](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
 It was my first experience with Tailwind CSS, a fantastic tool. I'm impressed and plan to use it more. I also got to work with various APIs and practice JavaScript. 
@@ -35,11 +36,5 @@ For instance, even though the challenge description didn't explicitly mention th
 - Mobile-first workflow
 - Free IP Geo Location
 - Leaflet (map API)
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
-### What I learned
-
-
 
 
