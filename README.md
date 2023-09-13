@@ -8,8 +8,8 @@ This is a solution to the [IP address tracker challenge on Frontend Mentor](http
 
 ### Links
 
-- Challenge URL: [Challenge URL:](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0)
-- Live Site URL: [Add live site URL here](https://ip-address-tracker-frontendmentor-one.vercel.app/)
+- Challenge URL: [https://www.frontendmentor.io/challenges/ip-address-tracker](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0)
+- Live Site URL: [https://vercel.com/kkinash/ip-address-tracker-frontendmentor](https://ip-address-tracker-frontendmentor-one.vercel.app/)
 
 ### The challenge
 
@@ -31,6 +31,7 @@ For instance, even though the challenge description didn't explicitly mention th
 ### Built with
 
 - Semantic HTML5 markup
+- Native JavaScript
 - Tailwind CSS
 - Flexbox
 - Mobile-first workflow
