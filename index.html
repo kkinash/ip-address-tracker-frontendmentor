@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>IP Address Tracker | Frontend Mentor </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="  crossorigin=""></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/a11y-dialog@8/dist/a11y-dialog.min.js"></script>
+    <script defer src="./app.js"></script>
+    <script type="module">
+      import A11yDialog from 'https://cdn.jsdelivr.net/npm/a11y-dialog@8/dist/a11y-dialog.esm.min.js'
+   
+     </script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '860px',
+        'lg': '1024px',
+        'xl': '1920px',
+          },fontFamily: {
+              'rubik': ['"Rubik"', 'sans-serif']
+            },
+          }
+        }
+      }
+    </script>
+
+</head>
+<body class=" h-screen ">
+  <div class=" bg-[url('./images/pattern-bg-mobile.png')] xs:bg-cover xs:bg-[url('./images/pattern-bg-desktop.png')] lg:bg-cover lg:bg-[url('./images/pattern-bg-desktop.png')] h-72 md:h-64 bg-no-repeat bg-center lg:bg-[width:100%]">
+      <div id="header-content" class="flex flex-col items-center ">
+        <h1 class="mt-6 mb-1 md:mt-8 md:mb-2  text-white font-rubik text-[1.7rem] md:text-[1.5rem] font-medium md:font-medium"><a href="./index.html">IP Address Tracker</a></h1>
+          <!-- form -->
+        <form action="./index.html" class="mx-2 mt-5 mb-4 md:mb-8 flex flex-row " method="GET" id="ip-form">
+          <input type="text" id="ip2" name="ip" class="outline-none appearance-none rounded-2xl p-3 md:w-96 text-[1.2rem] font-rubik min-w-[302px] min-h-[60px]" placeholder="Search for any IP address or domain" value=""></input>
+          <button class="appearance-none rounded-r-2xl p-2 bg-black -ml-8 w-14 text-white hover:scale-110 duration-150" form="ip-form" value="1Submit" >
+            <svg class="ml-3" xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>            
+      </button>
+        </form>
+             <!-- end form -->
+        <!-- white box -->
+        <div class="flex flex-col items-stretch md:flex-row md:flex-nowrap bg-white p-4 m-1 rounded-2xl shadow-md flex-wrap justify-between z-10 w-[328px] md:min-w-[98%] lg:min-w-[85%] xl:min-w-[78%] md:min-h-[120px] md:max-h-fit max-w-xl duration-150">
+            <div class="flex flex-col md:m-1  md:mr-6 lg:mr-12" >
+              <div class="font-rubik text-[#969696] uppercase text-[.6rem] md:text-[.6rem] font-bold tracking-widest mt-2 text-center md:text-left  mb-1">IP Address </div>
+              <div id="ip-adress" class="text-center mb-3 md:text-left font-medium font-rubik text-[1.3rem] md:text-[1.5rem] uppercase"></div>
+            </div>
+            <div class="flex flex-col md:m-1  md:mr-6 lg:mr-12 px-6 md:border-l-[1px] md:border-gray ">
+              <div class=" font-rubik text-[#969696] uppercase text-[.6rem] md:text-[.6rem] font-bold tracking-widest mt-2 text-center md:text-left  mb-1"> Location</div>
+              <div id="location" class="text-center mb-3 md:text-left font-medium font-rubik text-[1.3rem] md:text-[1.5rem] leading-6"></div>
+            </div>
+            <div class="flex flex-col  md:m-1  md:mr-6 lg:mr-12 px-6 md:border-l-[1px] md:border-gray md:min-w-[220px] ">
+              <div class="font-rubik text-[#969696] uppercase text-[.6rem] md:text-[.6rem] font-bold tracking-widest mt-2 text-center md:text-left mb-1">Timezone</div>
+              <div id="timezone" class="text-center mb-3 md:text-left font-medium font-rubik text-[1.3rem] md:text-[1.5rem]"></div>
+            </div>
+            <div class="flex flex-col md:m-1  md:mr-6 lg:mr-12 px-6 lg:w-1/5 md:border-l-[1px] md:border-gray">
+              <div class="font-rubik text-[#969696] uppercase text-[.6rem] md:text-[.6rem] font-bold tracking-widest mt-2 text-center md:text-left  mb-1"> ISP </div>
+              <div id="isp" class="text-center  md:text-left font-medium font-rubik text-[1.3rem] md:text-[1.5rem] "></div>
+            </div>   
+        </div>
+      </div>
+    </div>
+    <div id="map" class="h-[calc(100vh_-_18rem)] md:h-[calc(100%_-_16rem)] z-0 overflow-y-hidden">
+    </div>
+
+  <!-- error dialog -->
+  <dialog id="dialog" class="rounded-lg shadow-md fixed">
+    <div class="flex flex-col justify-center items-center  bg-white p-4 m-5 h-24 z-12 w-60 up">
+      <h1 class="font-bold uppercase font-rubik p-1 mb-4">invalid IP or domain</h1>
+      <button id="close-button" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow" value="cancel" formmethod="dialog">OK</button>
+    </div>
+  </dialog>
+  <!-- error dialog -->
+
+</body>
+<script>
+const dialog = document.getElementById('dialog');
+const showButton = document.getElementById("showDialog");
+const closeButton = document.getElementById("close-button");
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+</script>
+
+
+</html>
